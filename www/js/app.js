@@ -22,3 +22,35 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.controller('SlideCtrl', function($scope,$ionicSlideBoxDelegate){
+
+  $scope.tab1 = true;
+  $scope.tab2 = false;
+  $scope.tab3 = false;
+
+
+  $scope.changeActive = function(index){
+
+    $scope.tab1 = false;
+    $scope.tab2 = false;
+    $scope.tab3 = false;
+    
+    switch(index){
+      case 0:
+      $scope.tab1 = true;
+      break;
+      case 1:
+      $scope.tab2 = true;
+      break;
+      case 2:
+      $scope.tab3 = true;
+      break;
+    }
+  }
+
+  $scope.changeSlideOnClick = function($slidebox, index){
+    var SlideHandle = $ionicSlideBoxDelegate.$getByHandle($slidebox)
+    SlideHandle.slide(index);
+  }
+});
